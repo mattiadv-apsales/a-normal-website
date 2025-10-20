@@ -131,9 +131,24 @@ body {
     color: white;
 }
 
+.delete-course {
+    padding: 20px;
+    font-size: 20px;
+    background: red;
+    color: white;
+    border-radius: 26px;
+    width: 50%;
+    border: 1px solid red;
+    box-shadow: 0px 4px 16px rgba(255, 0, 0, 0.459)
+}
+
 @media screen and (max-width: 768px) {
     .container {
         padding: 0px;
+    }
+
+    .delete-course {
+        width: 100%;
     }
 
     .lesson {

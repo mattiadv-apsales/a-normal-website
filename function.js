@@ -36,17 +36,14 @@ export function closeCategory(id, titolo, corso) {
 
     let cat = document.getElementById(id);
     let h1_enter = cat.querySelector("h1");
-    const isOpen = cat.dataset.open === "true";
 
-    if (isOpen) {
-        cat.style.maxHeight = "80px";
+    if (cat.dataset.open == "true") {
         for (let elem of cat.children) {
             if (elem !== h1_enter) elem.style.display = "none";
         }
         titolo.innerHTML = corso + " ˅";
         cat.dataset.open = "false";
     } else {
-        cat.style.maxHeight = "auto";
         for (let elem of cat.children) {
             if (elem !== h1_enter) elem.style.display = "flex";
         }
@@ -66,6 +63,12 @@ export function creaCorso(quante_lezioni, nome_corso, saveToStorage = true) {
     cat_cont.dataset.open = "true";
     container.appendChild(cat_cont);
 
+    // titolo corso
+    let titolo_cat = document.createElement("h1");
+    titolo_cat.innerHTML = nome_corso + " ˄";
+    titolo_cat.onclick = function() { closeCategory(cat_cont.id, titolo_cat, nome_corso); }
+    cat_cont.appendChild(titolo_cat);
+
     // pulsante elimina corso
     let deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Elimina corso";
@@ -77,12 +80,6 @@ export function creaCorso(quante_lezioni, nome_corso, saveToStorage = true) {
         lastLessons(return_lesson_left());
     };
     cat_cont.appendChild(deleteBtn);
-
-    // titolo corso
-    let titolo_cat = document.createElement("h1");
-    titolo_cat.innerHTML = nome_corso + " ˄";
-    titolo_cat.onclick = () => closeCategory(cat_cont.id, titolo_cat, nome_corso);
-    cat_cont.appendChild(titolo_cat);
 
     // contenitore lezioni
     let categoria = document.createElement("div");
