@@ -50,6 +50,7 @@ export function closeCategory(id, titolo, corso) {
 }
 
 export function creaCorso(quante_lezioni, nome_corso) {
+    lesson_left += quante_lezioni;
     // container della categoria
     let cat_cont = document.createElement("div");
     cat_cont.classList.add("cont-cat");
@@ -103,11 +104,11 @@ export function ripristina_lezioni(corso) {
             lez.style.background = "lightgreen";
             lez.style.color = "white";
             lez.dataset.doing = "true";
+            lesson_left -= 1
         } else {
             lez.style.background = "white";
             lez.style.color = "black";
             lez.dataset.doing = "false";
-            lesson_left += 1
         }
     });
 }
@@ -135,7 +136,7 @@ export function lastLessons(left) {
 
         let val = document.createElement('div');
         val.classList.add("lessons_left");
-        val.innerHTML = "Mancano " + left + " lezioni!<br>" + dataFine;
+        val.innerHTML = "Mancano " + left + " lezioni!<br><span class = 'datafinale'>" + dataFine + "</span>";
 
         document.body.appendChild(val);
     } else {
