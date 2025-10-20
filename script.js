@@ -1,15 +1,32 @@
 import { creaCorso, ripristina_lezioni, return_lesson_left, lastLessons } from "./function.js";
+import { get_all_courses } from "./localstorage.js";
 
-creaCorso(10, "Corso web developing")
-creaCorso(6, "Corso programming principles")
-creaCorso(8, "Corso computer architecture")
-creaCorso(8, "Corso Discrete Mathematics")
-creaCorso(6, "Corso computer Networks")
+window.addEventListener('DOMContentLoaded', () => {
+    const corsiSalvati = get_all_courses();
+    corsiSalvati.forEach(corso => {
+        // Nota il false: NON salvare di nuovo
+        creaCorso(corso.lezioni, corso.nome_corso, false);
+    });
 
-ripristina_lezioni("Corso web developing")
-ripristina_lezioni("Corso programming principles")
-ripristina_lezioni("Corso computer architecture")
-ripristina_lezioni("Corso Discrete Mathematics")
-ripristina_lezioni("Corso computer Networks")
+    ripristina_lezioni();
+    lastLessons(return_lesson_left());
+});
 
-lastLessons(return_lesson_left())
+const createNow = document.getElementById('createNow');
+const namecorse = document.getElementById('namecorse');
+const lessons = document.getElementById('lessons');
+
+createNow.addEventListener('click', function() {
+    const name = namecorse.value.trim();
+    const less = parseInt(lessons.value);
+
+    if (!name || !less) return;
+
+    creaCorso(less, name);       // crea il corso e lo salva
+    ripristina_lezioni();        // aggiorna il conteggio
+    lastLessons(return_lesson_left());
+
+    // svuota i campi input
+    namecorse.value = "";
+    lessons.value = "";
+});
