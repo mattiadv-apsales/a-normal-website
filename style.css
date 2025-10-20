@@ -78,3 +78,13 @@ body {
     text-align: center;
     padding: 20px;
 }
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 0px;
+    }
+
+    .lesson {
+        width: 100%;
+    }
+}
