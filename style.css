@@ -23,41 +23,52 @@ body {
     align-items: center;
     flex-wrap: wrap;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
 }
 
 .cont-cat {
     background: white;
     padding: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     gap: 15px;
     width: 90%;
     border-radius: 26px;
+    box-shadow: 0px 4px 16px rgba(255, 255, 255, 0.425);
+    overflow: hidden;
 }
 
 .category {
     width: 90%;
-    padding: 20px;
-    min-height: 20px;
-    background: rgb(221, 221, 221);
+    padding: 40px;
+    background: #131313;
     border-radius: 26px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.459);
+}
+
+.cont-cat > h1 {
+    text-align: center;
+}
+
+.datafinale {
+    color: lightgreen;
+    font-weight: 800;
 }
 
 .lesson {
     width: calc(100% / 2.1);
-    padding: 20px;
+    padding: 10px;
     min-height: 20px;
     background: white;
     border-radius: 26px;
-    box-shadow: 0px 4px 16px rgba(0.1,0.1,0.1,0.356);
+    box-shadow: 0px 4px 16px rgba(235, 235, 235, 0.568);
     display: flex;
     justify-content: center;
     align-items: center;

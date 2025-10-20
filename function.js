@@ -24,16 +24,46 @@ export function fatta_lezione(id, corso) {
     }
 }
 
+export function closeCategory(id, titolo, corso) {
+    if (id) {
+        let cat = document.getElementById(id);
+        let h1_enter = cat.querySelector("h1");
+
+        if (cat.dataset.open == "true") {
+            for (let elem of cat.children) {
+                if (elem !== h1_enter) {
+                    elem.style.display = "none"
+                }
+            }
+            titolo.innerHTML = corso + " ˅";
+            cat.dataset.open = "false";
+        } else {
+            for (let elem of cat.children) {
+                if (elem !== h1_enter) {
+                    elem.style.display = "flex"
+                }
+            }
+            titolo.innerHTML = corso + " ˄";
+            cat.dataset.open = "true";
+        }
+    }
+}
+
 export function creaCorso(quante_lezioni, nome_corso) {
     // container della categoria
     let cat_cont = document.createElement("div");
     cat_cont.classList.add("cont-cat");
+    cat_cont.id = "cat_cont_" + nome_corso.replaceAll(" ", "_").toLowerCase()
+    cat_cont.dataset.open = "true";
 
     container.appendChild(cat_cont);
 
     // creazione titolo della categoria
     let titolo_cat = document.createElement("h1");
-    titolo_cat.innerHTML = nome_corso;
+    titolo_cat.innerHTML = nome_corso + " ˄";
+    titolo_cat.onclick = function() {
+        closeCategory(cat_cont.id, titolo_cat, nome_corso);
+    }
 
     cat_cont.appendChild(titolo_cat);
 
@@ -122,7 +152,7 @@ export function lastLessons(left) {
 
         let val = document.createElement('div');
         val.classList.add("lessons_left");
-        val.innerHTML = "Mancano " + left + " lezioni!<br>" + dataFine;
+        val.innerHTML = "Mancano " + left + " lezioni!<br><span class = 'datafinale'>" + dataFine + "</span>";
 
         document.body.appendChild(val);
     }
