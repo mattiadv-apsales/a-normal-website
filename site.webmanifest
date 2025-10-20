@@ -1,0 +1,11 @@
+{
+    "short_name": "Lezioni calcolo",
+    "name": "Lezioni rimaste",
+    "icons": [{
+        "src": "./img/logo.jpeg",
+        "type": "image/jpg",
+        "sizes": "192x192"
+    }],
+    "theme_color": "#131313",
+    "display": "fullscreen"
+}
