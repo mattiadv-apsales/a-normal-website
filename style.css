@@ -139,4 +139,8 @@ body {
     .lesson {
         width: 100%;
     }
+
+    .crea_corso > input {
+        width: 100%;
+    }
 }
